@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Health Articles - Logos Medical Services</title>
+    <link href="/Logo PNG.png" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --red-primary: #DC3545; /* Red */
+            --blue-secondary: #007BFF; /* Blue */
+            --white-bg: #FFFFFF;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--white-bg);
+            padding-top: 80px; /* Space for fixed navbar */
+        }
+        
+        /* Nav/Footer/Emergency Styles (Copied from index.html for completeness) */
+        .navbar { background-color: var(--blue-secondary); transition: background-color 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,.1); z-index: 1030; }
+        .navbar-brand, .nav-link { color: var(--white-bg) !important; font-weight: 600; }
+        .nav-link:hover { color: var(--red-primary) !important; }
+
+        #emergency-btn {
+            position: fixed; bottom: 20px; right: 20px; background-color: var(--red-primary); color: var(--white-bg); border: none; border-radius: 50px; padding: 15px 25px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1000;
+            animation: pulse 1.5s infinite; display: flex; align-items: center; text-decoration: none;
+        }
+        #emergency-btn i { margin-right: 8px; animation: ring-shake 1s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+        }
+        @keyframes ring-shake {
+            0%, 100% { transform: rotate(0); }
+            20%, 60% { transform: rotate(-10deg); }
+            40%, 80% { transform: rotate(10deg); }
+        }
+        .animated-icon:hover { animation: spin 1s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        .amateta-footer { background-color: var(--blue-secondary); color: var(--white-bg); padding: 40px 0 10px; font-size: 0.9rem; }
+        .amateta-footer h5 { color: var(--red-primary); margin-bottom: 20px; }
+        .amateta-footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 5px; transition: color 0.2s; }
+        .amateta-footer a:hover { color: var(--red-primary); }
+        .amateta-footer .social-icons a { display: inline-block; margin-right: 15px; font-size: 1.5rem; }
+        .credit-line { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px; margin-top: 20px; text-align: center; font-size: 0.8rem; }
+        /* End Nav/Footer/Emergency Styles */
+
+        /* Blog Specific Styles */
+        .page-header {
+            background-color: var(--red-primary);
+            color: var(--white-bg);
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        
+        .blog-card {
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-card .card-title {
+            color: var(--blue-secondary);
+            font-weight: 600;
+        }
+        
+        .read-more-btn {
+            color: var(--red-primary);
+            font-weight: 600;
+        }
+        
+        .meta-info {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .meta-info i {
+            margin-right: 5px;
+            color: var(--red-primary);
+        }
+
+        /* Category Sidebar */
+        .sidebar-card {
+            background-color: #f8f9fa;
+            border-left: 5px solid var(--blue-secondary);
+        }
+        
+        .category-list li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            padding: 5px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        
+        .category-list li a:hover {
+            color: var(--red-primary);
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="tel:+264 61 400 506" id="emergency-btn">
+        <i class="fas fa-phone-alt"></i> EMERGENCY
+    </a>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Logos Medical Services</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faqs.html">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour.html">Virtual Tour</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+        <section class="page-header text-center">
+            <div class="container" data-aos="fade-down">
+                <h1 class="display-4 fw-bold">Health Insights & News</h1>
+                <p class="lead">Stay informed with the latest health tips, awareness campaigns, and medical news from our experts.</p>
+            </div>
+        </section>
+
+        <section class="py-5 bg-white">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-lg-8">
+                        
+                        <div class="row g-4">
+                            
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="card blog-card h-100">
+                                    <img src="/Images/Preventive-Health-Checklists-For-Every-Age.avif" class="card-img-top" alt="Preventative Health">
+                                    <div class="card-body">
+                                        <p class="meta-info mb-1"><i class="fas fa-calendar-alt"></i> Sep 25, 2025 | <i class="fas fa-tag"></i> Wellness</p>
+                                        <h5 class="card-title">The Importance of Annual Preventative Checkups</h5>
+                                        <p class="card-text">Learn how simple annual screenings can detect and prevent serious conditions before they become critical.</p>
+                                        <a href="#" class="read-more-btn">Read More <i class="fas fa-arrow-right animated-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                                <div class="card blog-card h-100">
+                                    <img src="Images/travel.jpg" class="card-img-top" alt="Travel Vaccines">
+                                    <div class="card-body">
+                                        <p class="meta-info mb-1"><i class="fas fa-calendar-alt"></i> Sep 10, 2025 | <i class="fas fa-tag"></i> Vaccines</p>
+                                        <h5 class="card-title">Your Guide to Essential Travel Vaccines for Africa</h5>
+                                        <p class="card-text">Planning a trip? Ensure your safety with our expert advice on required and recommended travel vaccines.</p>
+                                        <a href="#" class="read-more-btn">Read More <i class="fas fa-arrow-right animated-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                                <div class="card blog-card h-100">
+                                    <img src="/Images/asthma.jpg" class="card-img-top" alt="Family Health">
+                                    <div class="card-body">
+                                        <p class="meta-info mb-1"><i class="fas fa-calendar-alt"></i> Aug 28, 2025 | <i class="fas fa-tag"></i> Family Care</p>
+                                        <h5 class="card-title">Managing Chronic Conditions in the Namibian Climate</h5>
+                                        <p class="card-text">Tips and strategies from our GPs on effectively living with conditions like asthma and hypertension.</p>
+                                        <a href="#" class="read-more-btn">Read More <i class="fas fa-arrow-right animated-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                                <div class="card blog-card h-100">
+                                    <img src="/Images/HIV TEST.jpg" class="card-img-top" alt="HIV Awareness">
+                                    <div class="card-body">
+                                        <p class="meta-info mb-1"><i class="fas fa-calendar-alt"></i> Aug 15, 2025 | <i class="fas fa-tag"></i> Awareness</p>
+                                        <h5 class="card-title">New Advances in HIV Pre & Post-Test Counselling</h5>
+                                        <p class="card-text">Understanding the latest protocols and the critical role of confidential counselling at our center.</p>
+                                        <a href="#" class="read-more-btn">Read More <i class="fas fa-arrow-right animated-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <nav aria-label="Page navigation" class="mt-5">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                    <div class="col-lg-4 mt-5 mt-lg-0" data-aos="fade-left">
+                        <div class="card p-4 sidebar-card">
+                            <h4 class="fw-bold mb-3 text-blue">Categories</h4>
+                            <ul class="list-unstyled category-list">
+                                <li><a href="https://www.hhs.gov/programs/prevention-and-wellness/index.html"><i class="fas fa-folder animated-icon"></i> Wellness & Prevention (8)</a></li>
+                                <li><a href="https://womenshealth.gov/"><i class="fas fa-folder animated-icon"></i> Women's Health (4)</a></li>
+                                <li><a href="https://opa.hhs.gov/adolescent-health/adolescent-sexual-and-reproductive-health/reproductive-health-services-and"><i class="fas fa-folder animated-icon"></i> Family Planning (2)</a></li>
+                                <li><a href="https://wwwnc.cdc.gov/travel/"><i class="fas fa-folder animated-icon"></i> Travel Health (3)</a></li>
+                                <li><a href="https://www.ama-assn.org/press-center"><i class="fas fa-folder animated-icon"></i> Medical News (5)</a></li>
+                            </ul>
+                            
+                            <h4 class="fw-bold mt-4 mb-3 text-red">Stay Updated</h4>
+                            <p>Subscribe to our newsletter for direct health tips!</p>
+                            <form>
+                                <div class="input-group mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                    <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane animated-icon"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="amateta-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Logos Medical</h5>
+                    <p>Providing trusted healthcare in Windhoek since 2024. Your family's well-being is our greatest commitment.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <a href="services.html">Our Services</a>
+                    <a href="doctors.html">Our Doctors</a>
+                    <a href="faqs.html">Patient FAQs</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Baines Center, Pioneers Park, Windhoek</p>
+                    <p><i class="fas fa-phone me-2"></i> +264 61 400 506</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@logosmedical.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="credit-line">
+                &copy; <span id="year"></span> Logos Medical Services. All Rights Reserved. | Website designed & developed by <a href="https://www.amateta.com" target="_blank">Amateta Technology and Graphics</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
