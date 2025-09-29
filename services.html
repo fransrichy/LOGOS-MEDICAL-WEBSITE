@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Services & Departments - Logos Medical Services</title>
     <link href="./Images/Head-01.jpg" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,48 +19,100 @@
         body {
             font-family: var(--font-family);
             background-color: var(--white-bg);
-            padding-top: 80px; /* Space for fixed navbar */
+            padding-top: 80px; /* Space for fixed navbar (Desktop) */
         }
         
-        /* Nav/Footer/Emergency Styles (Copied from index.html for completeness) */
-        .navbar { background-color: var(--blue-secondary); transition: background-color 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,.1); z-index: 1030; }
-        .navbar-brand, .nav-link { color: var(--white-bg) !important; font-weight: 600; }
-        .nav-link:hover { color: var(--red-primary) !important; }
-
-        #emergency-btn {
-            position: fixed; bottom: 20px; right: 20px; background-color: var(--red-primary); color: var(--white-bg); border: none; border-radius: 50px; padding: 15px 25px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1000;
-            animation: pulse 1.5s infinite; display: flex; align-items: center; text-decoration: none;
+        /* ---------------------------------
+            Navigation & Header Styles
+            --------------------------------- */
+        .navbar { 
+            background-color: var(--blue-secondary); 
+            transition: background-color 0.3s; 
+            box-shadow: 0 2px 8px rgba(0,0,0,.15); 
+            z-index: 1030; 
         }
-        #emergency-btn i { margin-right: 8px; animation: ring-shake 1s infinite; }
+
+        /* Added logo-mobile-safe class for logo responsiveness */
+        .logo-mobile-safe {
+            max-height: 80px;
+        }
+
+        .navbar-brand, .nav-link { 
+            color: var(--white-bg) !important; 
+            font-weight: 600; 
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active { 
+            color: var(--red-primary) !important; 
+            background-color: rgba(255, 255, 255, 0.15); 
+        }
+
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--red-primary);
+        }
+
+        /* ---------------------------------
+            Floating Emergency Button (Smoother)
+            --------------------------------- */
+        #emergency-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--red-primary);
+            color: var(--white-bg);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25); /* Soft, nice shadow */
+            z-index: 1000;
+            animation: pulse 2.5s infinite; /* Slowed down pulse animation */
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        #emergency-btn:hover {
+            transform: scale(1.05);
+            background-color: #C82333;
+        }
+        
+        #emergency-btn i {
+            margin-right: 8px;
+            /* Removed shaky ring-shake animation */
+        }
+
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.5); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
         }
-        @keyframes ring-shake {
-            0%, 100% { transform: rotate(0); }
-            20%, 60% { transform: rotate(-10deg); }
-            40%, 80% { transform: rotate(10deg); }
-        }
-        .animated-icon:hover { animation: spin 1s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         
-        .amateta-footer { background-color: var(--blue-secondary); color: var(--white-bg); padding: 40px 0 10px; font-size: 0.9rem; }
-        .amateta-footer h5 { color: var(--red-primary); margin-bottom: 20px; }
-        .amateta-footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 5px; transition: color 0.2s; }
-        .amateta-footer a:hover { color: var(--red-primary); }
-        .amateta-footer .social-icons a { display: inline-block; margin-right: 15px; font-size: 1.5rem; }
-        .credit-line { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px; margin-top: 20px; text-align: center; font-size: 0.8rem; }
-        /* End Nav/Footer/Emergency Styles */
-
-        /* Services Specific Styles */
+        /* Removed all unnecessary animations like .animated-icon and @keyframes spin */
+        
+        /* ---------------------------------
+            Page Header Style
+            --------------------------------- */
         .page-header {
             background-color: var(--red-primary);
             color: var(--white-bg);
             padding: 60px 0;
             margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         
+        .text-blue { color: var(--blue-secondary) !important; }
+        .text-red { color: var(--red-primary) !important; }
+
+        /* ---------------------------------
+            Service Card Styles
+            --------------------------------- */
         .service-card {
             border: none;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -69,8 +121,8 @@
         }
 
         .service-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px); /* Reduced lift for smoother feel */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
             border-left-color: var(--red-primary);
         }
 
@@ -85,12 +137,62 @@
             font-weight: 600;
         }
 
-        .service-list .col-md-6:nth-child(even) .service-card {
+        /* Alternating color scheme for visual interest */
+        .service-list .col-md-6:nth-child(even) .service-card,
+        .service-list .col-lg-4:nth-child(3n+2) .service-card {
             border-left-color: var(--red-primary);
         }
         
-        .service-list .col-md-6:nth-child(even) .service-card:hover {
+        .service-list .col-md-6:nth-child(even) .service-card:hover,
+        .service-list .col-lg-4:nth-child(3n+2) .service-card:hover {
             border-left-color: var(--blue-secondary);
+        }
+
+        /* Resetting the default blue line for the alternating logic */
+        .service-list .col-lg-4:nth-child(3n+1) .service-card,
+        .service-list .col-lg-4:nth-child(3n) .service-card {
+            border-left-color: var(--blue-secondary);
+        }
+        
+        /* ---------------------------------
+            Footer Style (Matching index.html)
+            --------------------------------- */
+        .amateta-footer {
+            background-color: var(--blue-secondary);
+            color: var(--white-bg);
+            padding: 40px 0 10px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer h5 { color: var(--red-primary); margin-bottom: 20px; }
+        .amateta-footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 5px; transition: color 0.2s; }
+        .amateta-footer a:hover { color: var(--red-primary); }
+        .amateta-footer .social-icons a { display: inline-block; margin-right: 15px; font-size: 1.5rem; color: var(--white-bg); transition: color 0.2s; }
+        .amateta-footer .social-icons a:hover { color: var(--red-primary); }
+        .credit-line { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px; margin-top: 20px; text-align: center; font-size: 0.8rem; }
+        
+        /* ---------------------------------
+            Mobile Responsiveness Overrides
+            --------------------------------- */
+        @media (max-width: 992px) { /* Tablet and Mobile */
+            body {
+                padding-top: 60px; /* Reduced space for smaller navbar */
+            }
+            .logo-mobile-safe {
+                max-height: 50px !important; /* Shrink logo on mobile */
+            }
+            .page-header {
+                padding: 40px 0;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            #emergency-btn {
+                bottom: 15px; 
+                right: 15px;
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -103,7 +205,8 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-    <img src="./Images/Logo PNG.png" alt="Logos Medical Logo" style="height: 80px;"></a>
+                <img src="./Images/Logo PNG.png" alt="Logos Medical Logo" class="logo-mobile-safe" style="max-height: 80px;">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -137,7 +240,7 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-heartbeat card-icon animated-icon"></i>
+                            <i class="fas fa-heartbeat card-icon"></i>
                             <h5 class="mb-2">HIV Testing & Counselling</h5>
                             <p class="text-muted">Confidential HIV testing, along with essential Pre & Post Test HIV Counselling.</p>
                         </div>
@@ -145,7 +248,7 @@
 
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-tint card-icon animated-icon"></i>
+                            <i class="fas fa-tint card-icon"></i>
                             <h5 class="mb-2">General Blood Testing</h5>
                             <p class="text-muted">Full range of pathology services and routine blood panels.</p>
                         </div>
@@ -153,7 +256,7 @@
 
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-dna card-icon animated-icon"></i>
+                            <i class="fas fa-dna card-icon"></i>
                             <h5 class="mb-2">DNA & Paternity Testing</h5>
                             <p class="text-muted">Accurate and confidential testing services for legal and personal requirements.</p>
                         </div>
@@ -161,7 +264,7 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-venus card-icon animated-icon"></i>
+                            <i class="fas fa-venus card-icon"></i>
                             <h5 class="mb-2">Women’s Health & Pap Smears</h5>
                             <p class="text-muted">Comprehensive women's health checks, screenings, and reproductive care.</p>
                         </div>
@@ -169,7 +272,7 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-cut card-icon animated-icon"></i>
+                            <i class="fas fa-cut card-icon"></i>
                             <h5 class="mb-2">Minor Surgical Procedures</h5>
                             <p class="text-muted">In-house removal of warts, moles, stitching, and wound care.</p>
                         </div>
@@ -177,7 +280,7 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-stethoscope card-icon animated-icon"></i>
+                            <i class="fas fa-stethoscope card-icon"></i>
                             <h5 class="mb-2">Chronic & Acute Management</h5>
                             <p class="text-muted">Effective management plans for diabetes, hypertension, asthma, and sudden illnesses.</p>
                         </div>
@@ -185,7 +288,7 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-user-friends card-icon animated-icon"></i>
+                            <i class="fas fa-user-friends card-icon"></i>
                             <h5 class="mb-2">Medical Consultations (All Ages)</h5>
                             <p class="text-muted">General consultations for children, adults, and the elderly.</p>
                         </div>
@@ -193,7 +296,7 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-share-square card-icon animated-icon"></i>
+                            <i class="fas fa-share-square card-icon"></i>
                             <h5 class="mb-2">Specialist Referrals</h5>
                             <p class="text-muted">Seamless and efficient referral process to a network of top Namibian specialists.</p>
                         </div>
@@ -201,7 +304,7 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-syringe card-icon animated-icon"></i>
+                            <i class="fas fa-syringe card-icon"></i>
                             <h5 class="mb-2">Immunization & Travel Vaccines</h5>
                             <p class="text-muted">Routine childhood immunizations and comprehensive travel vaccine advice.</p>
                         </div>
@@ -209,7 +312,7 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-file-medical card-icon animated-icon"></i>
+                            <i class="fas fa-file-medical card-icon"></i>
                             <h5 class="mb-2">Medical Reports & Forms</h5>
                             <p class="text-muted">Completion of medical reports for insurance, employment, and legal purposes.</p>
                         </div>
@@ -217,9 +320,17 @@
                     
                     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
                         <div class="card service-card p-4 h-100">
-                            <i class="fas fa-baby card-icon animated-icon"></i>
+                            <i class="fas fa-baby card-icon"></i>
                             <h5 class="mb-2">Family Planning</h5>
                             <p class="text-muted">Contraceptive advice, options, and related services.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="card service-card p-4 h-100">
+                            <i class="fas fa-microscope card-icon"></i>
+                            <h5 class="mb-2">General Pathology & Lab Work</h5>
+                            <p class="text-muted">Quick and reliable in-house blood and urine sample collection.</p>
                         </div>
                     </div>
 
@@ -234,7 +345,7 @@
                 <h2 class="fw-bold mb-3 text-blue">Need a specific service?</h2>
                 <p class="lead mb-4">Contact our reception today to confirm service details and book your appointment.</p>
                 <a href="contact.html" class="btn btn-lg btn-danger">
-                    <i class="fas fa-calendar-alt me-2 animated-icon"></i> CONTACT US TO BOOK
+                    <i class="fas fa-calendar-alt me-2"></i> CONTACT US TO BOOK
                 </a>
             </div>
         </section>
@@ -246,7 +357,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-logo">
-    <img src="./Images/White.png" alt="Logos Medical Footer Logo" style="height: 60px; opacity: 0.8;"></div>
+                        <img src="./Images/White.png" alt="Logos Medical Footer Logo" style="height: 60px; opacity: 0.8;">
+                    </div>
                     <p>Providing trusted healthcare in Windhoek since 2024. Your family's well-being is our greatest commitment.</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
@@ -282,7 +394,7 @@
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 1000,
+            duration: 800,
             once: true,
         });
 

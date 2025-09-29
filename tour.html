@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Virtual Tour - Logos Medical Services</title>
-    <link href="/Images/Head-01.jpg" rel="icon" type="image/x-icon">
+    <link href="./Images/Head-01.jpg" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -19,46 +19,113 @@
         body {
             font-family: var(--font-family);
             background-color: var(--white-bg);
-            padding-top: 80px; /* Space for fixed navbar */
+            padding-top: 80px; /* Space for fixed navbar (Desktop) */
         }
         
-        /* Nav/Footer/Emergency Styles (Copied from index.html for completeness) */
-        .navbar { background-color: var(--blue-secondary); transition: background-color 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,.1); z-index: 1030; }
-        .navbar-brand, .nav-link { color: var(--white-bg) !important; font-weight: 600; }
-        .nav-link:hover { color: var(--red-primary) !important; }
-
-        #emergency-btn {
-            position: fixed; bottom: 20px; right: 20px; background-color: var(--red-primary); color: var(--white-bg); border: none; border-radius: 50px; padding: 15px 25px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1000;
-            animation: pulse 1.5s infinite; display: flex; align-items: center; text-decoration: none;
+        /* ---------------------------------
+            Navigation & Header Styles
+            --------------------------------- */
+        .navbar { 
+            background-color: var(--blue-secondary); 
+            transition: background-color 0.3s; 
+            box-shadow: 0 2px 8px rgba(0,0,0,.15); 
+            z-index: 1030; 
         }
-        #emergency-btn i { margin-right: 8px; animation: ring-shake 1s infinite; }
+
+        .logo-mobile-safe {
+            max-height: 80px;
+        }
+
+        .navbar-brand, .nav-link { 
+            color: var(--white-bg) !important; 
+            font-weight: 600; 
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active { 
+            color: var(--red-primary) !important; 
+            background-color: rgba(255, 255, 255, 0.15); 
+        }
+
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--red-primary);
+        }
+        
+        /* ---------------------------------
+            Floating Emergency Button (Smoother)
+            --------------------------------- */
+        #emergency-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--red-primary);
+            color: var(--white-bg);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            z-index: 1000;
+            animation: pulse 2.5s infinite; /* Slowed down pulse animation */
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        #emergency-btn:hover {
+            transform: scale(1.05);
+            background-color: #C82333;
+        }
+        
+        #emergency-btn i {
+            margin-right: 8px;
+        }
+
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.5); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
         }
-        @keyframes ring-shake {
-            0%, 100% { transform: rotate(0); }
-            20%, 60% { transform: rotate(-10deg); }
-            40%, 80% { transform: rotate(10deg); }
+
+        /* ---------------------------------
+            Footer Style (Matching previous files)
+            --------------------------------- */
+        .amateta-footer {
+            background-color: var(--blue-secondary);
+            color: var(--white-bg);
+            padding: 40px 0 10px;
+            font-size: 0.9rem;
         }
-        .animated-icon:hover { animation: spin 1s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
-        .amateta-footer { background-color: var(--blue-secondary); color: var(--white-bg); padding: 40px 0 10px; font-size: 0.9rem; }
+
         .amateta-footer h5 { color: var(--red-primary); margin-bottom: 20px; }
         .amateta-footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 5px; transition: color 0.2s; }
         .amateta-footer a:hover { color: var(--red-primary); }
-        .amateta-footer .social-icons a { display: inline-block; margin-right: 15px; font-size: 1.5rem; }
+        .amateta-footer .social-icons a { display: inline-block; margin-right: 15px; font-size: 1.5rem; color: var(--white-bg); transition: color 0.2s; }
+        .amateta-footer .social-icons a:hover { color: var(--red-primary); }
         .credit-line { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px; margin-top: 20px; text-align: center; font-size: 0.8rem; }
-        /* End Nav/Footer/Emergency Styles */
-
-        /* Virtual Tour Specific Styles */
+        
+        /* ---------------------------------
+            Virtual Tour Specific Styles
+            --------------------------------- */
         .page-header {
-            background-color: var(--red-primary);
+            /* Changed header background to blue for better visual separation from red-themed cards */
+            background-color: var(--blue-secondary);
             color: var(--white-bg);
             padding: 60px 0;
             margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .text-red {
+            color: var(--red-primary);
+        }
+        .text-blue {
+            color: var(--blue-secondary);
         }
         
         .video-container {
@@ -85,17 +152,28 @@
             border: 1px solid #eee;
             border-radius: 8px;
             overflow: hidden;
+            transition: box-shadow 0.3s;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .facility-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .facility-card img {
             height: 250px;
             object-fit: cover;
             width: 100%;
+            transition: transform 0.5s;
+        }
+        
+        .facility-card:hover img {
+            transform: scale(1.05);
         }
         
         .facility-card .card-body {
             border-top: 3px solid var(--blue-secondary);
+            transition: border-top-color 0.3s;
         }
         
         .facility-card:hover .card-body {
@@ -104,12 +182,36 @@
         
         .facility-card h5 {
             color: var(--red-primary);
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .facility-card i {
             color: var(--blue-secondary);
             margin-right: 8px;
+        }
+        
+        /* ---------------------------------
+            Mobile Responsiveness Overrides
+            --------------------------------- */
+        @media (max-width: 992px) { /* Tablet and Mobile */
+            body {
+                padding-top: 60px; /* Reduced space for smaller navbar */
+            }
+            .logo-mobile-safe {
+                max-height: 50px !important; /* Shrink logo on mobile */
+            }
+            .page-header {
+                padding: 40px 0;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            #emergency-btn {
+                bottom: 15px; 
+                right: 15px;
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -122,7 +224,8 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-    <img src="/Images/Logo PNG.png" alt="Logos Medical Logo" style="height: 80px;"></a>
+                <img src="./Images/Logo PNG.png" alt="Logos Medical Logo" class="logo-mobile-safe" style="max-height: 80px;">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -155,7 +258,7 @@
                 <h3 class="text-center fw-bold mb-4 text-blue">Video Walkthrough</h3>
                 <div class="video-container">
                     <iframe 
-                        src="/Images/Advert.mp4" 
+                        src="./Images/Advert.mp4" 
                         title="Logos Medical Services Virtual Tour" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen
@@ -171,9 +274,9 @@
                     
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
                         <div class="card facility-card h-100">
-                            <img src="" class="card-img-top" alt="Reception Area">
+                            <img src="./Images/Tour/Reception-Placeholder.jpg" class="card-img-top" alt="Reception Area">
                             <div class="card-body">
-                                <h5><i class="fas fa-hospital-alt animated-icon"></i> Welcoming Reception</h5>
+                                <h5><i class="fas fa-hospital-alt"></i> Welcoming Reception</h5>
                                 <p class="card-text">A calm and spacious reception area designed for patient comfort and privacy.</p>
                             </div>
                         </div>
@@ -181,9 +284,9 @@
                     
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                         <div class="card facility-card h-100">
-                            <img src="" class="card-img-top" alt="Consulting Room">
+                            <img src="./Images/Tour/Consulting-Placeholder.jpg" class="card-img-top" alt="Consulting Room">
                             <div class="card-body">
-                                <h5><i class="fas fa-user-tie animated-icon"></i> Private Consulting Rooms</h5>
+                                <h5><i class="fas fa-user-tie"></i> Private Consulting Rooms</h5>
                                 <p class="card-text">Equipped with modern diagnostic tools for comprehensive medical consultations.</p>
                             </div>
                         </div>
@@ -191,9 +294,9 @@
                     
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
                         <div class="card facility-card h-100">
-                            <img src="" class="card-img-top" alt="Lab Area">
+                            <img src="./Images/Tour/Lab-Placeholder.jpg" class="card-img-top" alt="Lab Area">
                             <div class="card-body">
-                                <h5><i class="fas fa-flask animated-icon"></i> In-House Lab Services</h5>
+                                <h5><i class="fas fa-flask"></i> In-House Lab Services</h5>
                                 <p class="card-text">Dedicated space for quick and accurate blood testing and other sample analysis.</p>
                             </div>
                         </div>
@@ -201,9 +304,9 @@
                     
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
                         <div class="card facility-card h-100">
-                            <img src="" class="card-img-top" alt="Procedure Room">
+                            <img src="./Images/Tour/Procedure-Placeholder.jpg" class="card-img-top" alt="Procedure Room">
                             <div class="card-body">
-                                <h5><i class="fas fa-cut animated-icon"></i> Minor Surgical Suite</h5>
+                                <h5><i class="fas fa-cut"></i> Minor Surgical Suite</h5>
                                 <p class="card-text">A sterile environment for performing minor surgical and advanced wound care procedures.</p>
                             </div>
                         </div>
@@ -211,9 +314,9 @@
                     
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
                         <div class="card facility-card h-100">
-                            <img src="" class="card-img-top" alt="Recovery Area">
+                            <img src="./Images/Tour/Recovery-Placeholder.jpg" class="card-img-top" alt="Recovery Area">
                             <div class="card-body">
-                                <h5><i class="fas fa-bed animated-icon"></i> Private Recovery Area</h5>
+                                <h5><i class="fas fa-bed"></i> Private Recovery Area</h5>
                                 <p class="card-text">Comfortable space for short-term observation and post-procedure recovery.</p>
                             </div>
                         </div>
@@ -221,9 +324,9 @@
                     
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
                         <div class="card facility-card h-100">
-                            <img src="" class="card-img-top" alt="Medical Equipment">
+                            <img src="./Images/Tour/Equipment-Placeholder.jpg" class="card-img-top" alt="Medical Equipment">
                             <div class="card-body">
-                                <h5><i class="fas fa-cogs animated-icon"></i> Advanced Equipment</h5>
+                                <h5><i class="fas fa-cogs"></i> Advanced Equipment</h5>
                                 <p class="card-text">Utilizing up-to-date medical technology for better diagnosis and treatment.</p>
                             </div>
                         </div>
@@ -240,7 +343,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-logo">
-    <img src="/Images/White.png" alt="Logos Medical Footer Logo" style="height: 60px; opacity: 0.8;"></div>
+                        <img src="./Images/White.png" alt="Logos Medical Footer Logo" style="height: 60px; opacity: 0.8;">
+                    </div>
                     <p>Providing trusted healthcare in Windhoek since 2024. Your family's well-being is our greatest commitment.</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
@@ -254,7 +358,7 @@
                     <h5>Contact Info</h5>
                     <p><i class="fas fa-map-marker-alt me-2"></i> Baines Center, Pioneers Park, Windhoek</p>
                     <p><i class="fas fa-phone me-2"></i> +264 61 400 506</p>
-                    <p><i class="fas fa-envelope me-2"></i> info@logosmedical.com</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@logosmedicalservices.com</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Follow Us</h5>
@@ -276,12 +380,18 @@
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 1000,
+            duration: 800,
             once: true,
         });
 
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // --- NOTE: Image path placeholders were added/corrected. ---
+        // To make the card images work, replace the placeholder paths with actual image files inside a "Tour" sub-folder:
+        // document.querySelector('[alt="Reception Area"]').src = "./Images/Tour/reception.jpg";
+        // etc.
+        // For now, I've used generic placeholders.
     </script>
 
 </body>

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FAQs - Logos Medical Services</title>
-    <link href="/Images/Head-01.jpg" rel="icon" type="image/x-icon">
+    <link href="./Images/Head-01.jpg" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -19,62 +19,124 @@
         body {
             font-family: var(--font-family);
             background-color: var(--white-bg);
-            padding-top: 80px; /* Space for fixed navbar */
+            padding-top: 80px; /* Space for fixed navbar (Desktop) */
         }
         
-        /* Nav/Footer/Emergency Styles (Copied from index.html for completeness) */
-        .navbar { background-color: var(--blue-secondary); transition: background-color 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,.1); z-index: 1030; }
-        .navbar-brand, .nav-link { color: var(--white-bg) !important; font-weight: 600; }
-        .nav-link:hover { color: var(--red-primary) !important; }
-
-        #emergency-btn {
-            position: fixed; bottom: 20px; right: 20px; background-color: var(--red-primary); color: var(--white-bg); border: none; border-radius: 50px; padding: 15px 25px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1000;
-            animation: pulse 1.5s infinite; display: flex; align-items: center; text-decoration: none;
+        /* ---------------------------------
+            Navigation & Header Styles
+            --------------------------------- */
+        .navbar { 
+            background-color: var(--blue-secondary); 
+            transition: background-color 0.3s; 
+            box-shadow: 0 2px 8px rgba(0,0,0,.15); 
+            z-index: 1030; 
         }
-        #emergency-btn i { margin-right: 8px; animation: ring-shake 1s infinite; }
+
+        .logo-mobile-safe {
+            max-height: 80px;
+        }
+
+        .navbar-brand, .nav-link { 
+            color: var(--white-bg) !important; 
+            font-weight: 600; 
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active { 
+            color: var(--red-primary) !important; 
+            background-color: rgba(255, 255, 255, 0.15); 
+        }
+
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--red-primary);
+        }
+        
+        /* ---------------------------------
+            Floating Emergency Button (Smoother)
+            --------------------------------- */
+        #emergency-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--red-primary);
+            color: var(--white-bg);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            z-index: 1000;
+            animation: pulse 2.5s infinite; /* Slowed down pulse animation */
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        #emergency-btn:hover {
+            transform: scale(1.05);
+            background-color: #C82333;
+        }
+        
+        #emergency-btn i {
+            margin-right: 8px;
+        }
+
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.5); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
         }
-        @keyframes ring-shake {
-            0%, 100% { transform: rotate(0); }
-            20%, 60% { transform: rotate(-10deg); }
-            40%, 80% { transform: rotate(10deg); }
+
+        /* ---------------------------------
+            Footer Style (Matching previous files)
+            --------------------------------- */
+        .amateta-footer {
+            background-color: var(--blue-secondary);
+            color: var(--white-bg);
+            padding: 40px 0 10px;
+            font-size: 0.9rem;
         }
-        .animated-icon:hover { animation: spin 1s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
-        .amateta-footer { background-color: var(--blue-secondary); color: var(--white-bg); padding: 40px 0 10px; font-size: 0.9rem; }
+
         .amateta-footer h5 { color: var(--red-primary); margin-bottom: 20px; }
         .amateta-footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 5px; transition: color 0.2s; }
         .amateta-footer a:hover { color: var(--red-primary); }
-        .amateta-footer .social-icons a { display: inline-block; margin-right: 15px; font-size: 1.5rem; }
+        .amateta-footer .social-icons a { display: inline-block; margin-right: 15px; font-size: 1.5rem; color: var(--white-bg); transition: color 0.2s; }
+        .amateta-footer .social-icons a:hover { color: var(--red-primary); }
         .credit-line { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 10px; margin-top: 20px; text-align: center; font-size: 0.8rem; }
-        /* End Nav/Footer/Emergency Styles */
 
-        /* FAQs Specific Styles */
+        /* ---------------------------------
+            FAQs Specific Styles
+            --------------------------------- */
         .page-header {
             background-color: var(--blue-secondary);
             color: var(--white-bg);
             padding: 60px 0;
             margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         
         /* Accordion Custom Styling */
         .accordion-item {
             border: 1px solid #ddd;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px; /* Increased margin for better spacing */
+            border-radius: 8px !important;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .accordion-button {
             background-color: var(--white-bg);
-            color: var(--red-primary);
-            font-weight: 600;
+            color: var(--blue-secondary); /* Changed button text to blue for contrast/branding */
+            font-weight: 700; /* Bolder font */
             font-size: 1.1rem;
             border-bottom: 1px solid #ddd;
             transition: background-color 0.3s;
+            padding: 1rem 1.25rem;
         }
         
         .accordion-button:not(.collapsed) {
@@ -88,14 +150,14 @@
             content: "\f055"; /* fas fa-plus-circle */
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
-            color: var(--red-primary);
+            color: var(--blue-secondary); /* Plus icon is blue when collapsed */
             background-image: none;
             transition: transform 0.3s;
         }
 
         .accordion-button:not(.collapsed)::after {
             content: "\f056"; /* fas fa-minus-circle */
-            color: var(--white-bg);
+            color: var(--white-bg); /* Minus icon is white when expanded */
             transform: rotate(0deg); /* Stop default rotate */
         }
 
@@ -103,11 +165,58 @@
             background-color: #f8f9fa;
             border-top: 1px solid #eee;
             color: #495057;
+            padding: 1.25rem;
+            line-height: 1.6;
         }
         
         .faq-icon {
-            color: var(--blue-secondary);
+            color: var(--red-primary); /* Icon color */
             margin-right: 10px;
+            transition: color 0.3s;
+        }
+
+        .accordion-button:not(.collapsed) .faq-icon {
+            color: var(--white-bg); /* Icon color when active */
+        }
+        
+        .text-blue {
+            color: var(--blue-secondary) !important;
+        }
+        
+        .btn-danger {
+            background-color: var(--red-primary);
+            border-color: var(--red-primary);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-danger:hover {
+            background-color: #C82333;
+            border-color: #C82333;
+            transform: translateY(-2px);
+        }
+
+        /* ---------------------------------
+            Mobile Responsiveness Overrides
+            --------------------------------- */
+        @media (max-width: 992px) { /* Tablet and Mobile */
+            body {
+                padding-top: 60px; /* Reduced space for smaller navbar */
+            }
+            .logo-mobile-safe {
+                max-height: 50px !important; /* Shrink logo on mobile */
+            }
+            .page-header {
+                padding: 40px 0;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            #emergency-btn {
+                bottom: 15px; 
+                right: 15px;
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -120,7 +229,8 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-    <img src="/Images/Logo PNG.png" alt="Logos Medical Logo" style="height: 80px;"></a>
+                <img src="./Images/Logo PNG.png" alt="Logos Medical Logo" class="logo-mobile-safe" style="max-height: 80px;">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -158,12 +268,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <i class="fas fa-calendar-check faq-icon animated-icon"></i> How do I book an appointment?
+                                        <i class="fas fa-calendar-check faq-icon"></i> How do I book an appointment?
                                     </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        You can book an appointment either by calling our reception desk at +264 61 400 506 during operating hours, or by filling out the secure inquiry form on our <a href="contact.html">Contact Page</a>. We recommend booking in advance.
+                                        You can book an appointment either by calling our reception desk at **+264 61 400 506** during operating hours, or by filling out the secure inquiry form on our <a href="contact.html">Contact Page</a>. We recommend booking in advance.
                                     </div>
                                 </div>
                             </div>
@@ -171,12 +281,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <i class="fas fa-briefcase-medical faq-icon animated-icon"></i> What forms of payment or medical aid do you accept?
+                                        <i class="fas fa-briefcase-medical faq-icon"></i> What forms of payment or medical aid do you accept?
                                     </button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Logos Medical Services accepts most major Namibian medical aid schemes. Please call our billing department to confirm your specific scheme's coverage. We also accept cash, card (Visa/Mastercard), and EFT payments.
+                                        Logos Medical Services accepts most major **Namibian medical aid schemes**. Please call our billing department to confirm your specific scheme's coverage. We also accept cash, card (Visa/Mastercard), and EFT payments.
                                     </div>
                                 </div>
                             </div>
@@ -184,12 +294,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <i class="fas fa-user-md faq-icon animated-icon"></i> Can I see a specialist without a referral?
+                                        <i class="fas fa-user-md faq-icon"></i> Can I see a specialist without a referral?
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        While our general practitioners are equipped for primary care, most specialists require a referral from a GP, especially for medical aid purposes. We can arrange a consultation with one of our GPs to facilitate a timely referral.
+                                        While our general practitioners are equipped for primary care, most specialists require a **referral from a GP**, especially for medical aid purposes. We can arrange a consultation with one of our GPs to facilitate a timely referral.
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +307,7 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFour">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        <i class="fas fa-syringe faq-icon animated-icon"></i> Do you offer all required travel vaccines?
+                                        <i class="fas fa-syringe faq-icon"></i> Do you offer all required travel vaccines?
                                     </button>
                                 </h2>
                                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
@@ -210,12 +320,12 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFive">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                        <i class="fas fa-clock faq-icon animated-icon"></i> What are your emergency procedures?
+                                        <i class="fas fa-clock faq-icon"></i> What are your emergency procedures?
                                     </button>
                                 </h2>
                                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        For life-threatening emergencies, please call +264 61 400 506 immediately. For urgent but non-life-threatening medical concerns during or just outside operating hours, please use the **Emergency Contact Button** at the bottom right of the screen or call the emergency line provided on the Contact page.
+                                        For life-threatening emergencies, please call **+264 61 400 506** immediately. For urgent but non-life-threatening medical concerns during or just outside operating hours, please use the **Emergency Contact Button** at the bottom right of the screen or call the emergency line provided on the Contact page.
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +336,7 @@
                             <h4 class="text-blue">Still have questions?</h4>
                             <p class="lead">We're happy to assist you directly.</p>
                             <a href="contact.html" class="btn btn-lg btn-danger">
-                                <i class="fas fa-headset me-2 animated-icon"></i> Contact Our Team Now
+                                <i class="fas fa-headset me-2"></i> Contact Our Team Now
                             </a>
                         </div>
                         
@@ -242,7 +352,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-logo">
-    <img src="/Images/White.png" alt="Logos Medical Footer Logo" style="height: 60px; opacity: 0.8;"></div>
+                        <img src="./Images/White.png" alt="Logos Medical Footer Logo" style="height: 60px; opacity: 0.8;">
+                    </div>
                     <p>Providing trusted healthcare in Windhoek since 2024. Your family's well-being is our greatest commitment.</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
@@ -256,7 +367,7 @@
                     <h5>Contact Info</h5>
                     <p><i class="fas fa-map-marker-alt me-2"></i> Baines Center, Pioneers Park, Windhoek</p>
                     <p><i class="fas fa-phone me-2"></i> +264 61 400 506</p>
-                    <p><i class="fas fa-envelope me-2"></i> info@logosmedical.com</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@logosmedicalservices.com</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Follow Us</h5>
@@ -278,7 +389,7 @@
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 1000,
+            duration: 800,
             once: true,
         });
 

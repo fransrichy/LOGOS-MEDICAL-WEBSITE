@@ -23,12 +23,12 @@
         }
 
         /* ---------------------------------
-            Navigation & Header Styles
+            Navigation & Header Styles (Improved Professional Buttons)
             --------------------------------- */
         .navbar {
             background-color: var(--blue-secondary);
             transition: background-color 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,.15); /* Slightly stronger shadow */
+            box-shadow: 0 2px 8px rgba(0,0,0,.15);
             z-index: 1030;
         }
 
@@ -47,7 +47,7 @@
 
         .nav-link:hover, .nav-link.active {
             color: var(--red-primary) !important;
-            background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
+            background-color: rgba(255, 255, 255, 0.15); /* Subtle hover background */
         }
         
         .nav-link.active {
@@ -56,30 +56,30 @@
         }
 
         /* ---------------------------------
-            Hero Section (Fixed Background)
+            Hero Section (Fixed Background + Image Path)
             --------------------------------- */
         .hero-section {
-            /* 1. Fixed Background Image for modern effect 
-                2. Use a placeholder path for the image (User needs to add image name here)
+            /* *** IMPORTANT IMAGE FIX *** Set the path to your medical background image here.
+                I am using the name 'medical-hero-bg.jpg' as a placeholder.
             */
-            background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(220, 53, 69, 0.7)), url('./Images/Medical_Background_Placeholder.jpg') no-repeat center center;
+            background: linear-gradient(rgba(0, 123, 255, 0.75), rgba(220, 53, 69, 0.75)), url('./Images/medical-hero-bg.jpg') no-repeat center center;
             background-size: cover;
-            background-attachment: fixed; /* Key for fixed background effect */
+            background-attachment: fixed; /* Ensures the background stays fixed when scrolling */
             color: var(--white-bg);
             padding: 100px 0;
             min-height: 70vh;
             display: flex;
             align-items: center;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Stronger text shadow for readability */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
         }
 
         /* ---------------------------------
-            Floating Emergency Button (Smoother)
+            Floating Emergency Button (Smoother Animation)
             --------------------------------- */
         #emergency-btn {
             position: fixed;
-            bottom: 30px; /* Slightly higher */
-            right: 30px; /* Slightly away from the edge */
+            bottom: 30px;
+            right: 30px;
             background-color: var(--red-primary);
             color: var(--white-bg);
             border: none;
@@ -87,9 +87,9 @@
             padding: 15px 25px;
             font-size: 1.1rem;
             font-weight: 700;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.25); /* Smoother, softer shadow */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25); /* Soft, nice shadow */
             z-index: 1000;
-            animation: pulse 2s infinite; /* Slower, smoother pulse */
+            animation: pulse 2.5s infinite; /* Slowed down pulse animation */
             transition: transform 0.2s;
             display: flex;
             align-items: center;
@@ -98,23 +98,22 @@
         
         #emergency-btn:hover {
             transform: scale(1.05);
+            background-color: #C82333;
         }
         
         #emergency-btn i {
             margin-right: 8px;
-            /* Removed ring-shake animation */
+            /* Removed jerky ring-shake animation */
         }
 
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.5); }
-            70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); } /* Less aggressive scaling */
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
         }
         
-        /* Removed .animated-icon and @keyframes spin */
-        
         /* ---------------------------------
-            Homepage Content Styles
+            General Content & CTA Styles
             --------------------------------- */
         .text-blue { color: var(--blue-secondary) !important; }
         .text-red { color: var(--red-primary) !important; }
@@ -122,32 +121,33 @@
         .cta-btn-primary {
             background-color: var(--red-primary);
             border-color: var(--red-primary);
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.1s;
         }
         
         .cta-btn-primary:hover {
-            background-color: #C82333; /* Darker Red */
-            border-color: #C82333;
+            background-color: var(--blue-secondary);
+            border-color: var(--blue-secondary);
+            transform: translateY(-2px); /* Subtle lift on hover */
         }
 
         .cta-btn-secondary {
             background-color: transparent;
             border: 2px solid var(--white-bg);
             color: var(--white-bg);
-            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.1s;
         }
         
         .cta-btn-secondary:hover {
             background-color: var(--white-bg);
-            color: var(--blue-secondary);
+            color: var(--red-primary);
             border-color: var(--white-bg);
+            transform: translateY(-2px);
         }
         
         .contact-card .card-icon {
             color: var(--blue-secondary);
             font-size: 2rem;
             margin-bottom: 10px;
-            /* Removed animated-icon class effects */
         }
         
         /* ---------------------------------
@@ -179,17 +179,26 @@
             }
             .hero-section {
                 padding: 60px 0; /* Reduced Hero padding */
-                min-height: 50vh; /* Reduced Hero height */
+                min-height: 45vh; /* Reduced Hero height */
+                background-attachment: scroll; /* Fixed background can be glitchy on some mobile browsers, so we set it to scroll */
             }
-            #emergency-btn {
-                bottom: 20px; 
-                right: 20px;
-                padding: 12px 20px;
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            .hero-section p.lead {
                 font-size: 1rem;
             }
-            /* Ensure text wraps in quick contact on small screens */
-            .col-lg-5 p {
-                word-break: break-word; 
+            #emergency-btn {
+                bottom: 15px; 
+                right: 15px;
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+            .contact-card {
+                margin-top: 20px; /* Add space on mobile when columns stack */
+            }
+            .cta-btn-primary, .cta-btn-secondary {
+                margin-bottom: 10px; /* Space out buttons on small screens */
             }
         }
     </style>
@@ -334,7 +343,7 @@
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 800, // Slightly faster, smoother transitions
+            duration: 800,
             once: true,
         });
 
